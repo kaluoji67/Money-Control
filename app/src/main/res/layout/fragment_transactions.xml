@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintHeight_min="600dp"
+    tools:context=".transactionsFragment">
+
+
+    <WebView
+        android:id="@+id/pdf_webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerHolder" />
+
+    <Button
+        android:id="@+id/export_Button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_download"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/filter_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+
+        <View
+            android:id="@+id/payment_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paymentRelativeLayout" />
+
+        <View
+            android:id="@+id/end_divider"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="50dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/all_type_button" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/typeRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView14"
+            tools:layout_editor_absoluteX="20dp">
+
+            <Button
+                android:id="@+id/income_type_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:alpha="0.2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Income"
+                android:textSize="12sp"
+                app:backgroundTint="@color/app_color_theme" />
+
+            <Button
+                android:id="@+id/expenses_type_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toEndOf="@+id/income_type_button"
+                android:layout_toRightOf="@+id/income_type_button"
+                android:alpha="0.2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Expenses"
+                android:textSize="12sp"
+                app:backgroundTint="@color/app_color_theme" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/divider12"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/typeRelativeLayout"
+            tools:layout_editor_absoluteX="20dp" />
+
+
+        <TextView
+            android:id="@+id/category_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Category"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/typeRelativeLayout" />
+
+        <RelativeLayout
+            android:id="@+id/switch_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/category_header"
+            tools:layout_editor_absoluteX="20dp">
+
+            <View
+                android:id="@+id/divider14"
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+
+                android:layout_centerVertical="true"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/expenses_cat_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_toEndOf="@+id/divider14"
+                android:layout_toRightOf="@+id/divider14"
+                android:layout_weight="1"
+                android:alpha="0.2"
+                android:text="Expenses"
+                android:textColor="@color/app_color_theme"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/income_cat_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toStartOf="@+id/divider14"
+                android:layout_toLeftOf="@+id/divider14"
+                android:layout_weight="1"
+                android:text="Income"
+                android:textColor="@color/app_color_theme"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/category_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/switch_category"
+            tools:layout_editor_absoluteX="20dp">
+
+            <RelativeLayout
+                android:id="@+id/expensesCategoryRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="20dp">
+
+                <Button
+                    android:id="@+id/entertainment_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/food_button"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Entertainment"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/food_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/household_button"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Food"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/groceries_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Groceries"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/household_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_toEndOf="@+id/groceries_button"
+                    android:layout_toRightOf="@+id/groceries_button"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Household"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/education_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/entertainment_button"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Education"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/health_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/other_button"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/education_button"
+                    android:layout_toRightOf="@+id/education_button"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Health"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/gift_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/household_button"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/other_button"
+                    android:layout_toRightOf="@+id/other_button"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Gift"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/other_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/household_button"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/entertainment_button"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Other"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/incomeCategoryRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                tools:layout_editor_absoluteX="20dp">
+
+                <Button
+                    android:id="@+id/other_income_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/investment_button"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Other"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/investment_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/loan_button"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Investment"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/salary_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Salary"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+                <Button
+                    android:id="@+id/loan_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/salary_button"
+                    android:alpha="0.2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:text="Loan"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/app_color_theme" />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <View
+            android:id="@+id/divider_category"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/category_holder"
+            tools:layout_editor_absoluteX="20dp" />
+
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Payment Type"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_category" />
+
+        <RelativeLayout
+            android:id="@+id/paymentRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView15"
+            tools:layout_editor_absoluteX="20dp">
+
+            <Button
+                android:id="@+id/cash_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:alpha="0.2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Cash"
+                android:textSize="12sp"
+                app:backgroundTint="@color/app_color_theme" />
+
+            <Button
+                android:id="@+id/bank_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/cash_button"
+                android:alpha="0.2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Bank Transfer"
+                android:textSize="12sp"
+                app:backgroundTint="@color/app_color_theme" />
+
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/all_type_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Reset"
+            app:backgroundTint="@color/app_color_theme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/payment_divider" />
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginBottom="20dp"
+            android:text="Close"
+            app:backgroundTint="@color/app_color_theme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/payment_divider" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_color_theme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Bugdet_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Transactions"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:queryHint="@string/search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/filter_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/filter_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_filter"
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recyclerHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_container">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_transactions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
