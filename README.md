@@ -6,7 +6,8 @@ narration, spending category, amongst others.
 Technologies : Java, Android Studio.
 
 Here are some screnshots from the app:
-![Splash Screen](https://github.com/kaluoji67/Money-Control/blob/4e378818766b63bc177abea809fae955067cff5e/images/splash.JPG)
+<p> Home Screen </p>
+<img src="https://github.com/kaluoji67/Money-Control/blob/4e378818766b63bc177abea809fae955067cff5e/images/home.JPG" width=""100" height="200"/>
 ![Home Screen](https://github.com/kaluoji67/Money-Control/blob/4e378818766b63bc177abea809fae955067cff5e/images/home.JPG)
 ![Transactions](https://github.com/kaluoji67/Money-Control/blob/4e378818766b63bc177abea809fae955067cff5e/images/transaction.JPG)
 ![Transsactions](https://github.com/kaluoji67/Money-Control/blob/4e378818766b63bc177abea809fae955067cff5e/images/tranns%202.JPG)
